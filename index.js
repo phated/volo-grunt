@@ -37,7 +37,8 @@ module.exports = {
       args = [].slice.call(arguments, 3);
     }
 
-    v.spawn('grunt', flags.concat(args), {
+    // Prefix with n. so spawn knows to grab it from local
+    v.spawn('n.grunt', flags.concat(args), {
       useConsole: true
     })
     .then(function () {
