@@ -8,7 +8,11 @@ where the valid flags are:
 
 ## Examples
 
+Calling the default grunt command
+
     > volo grunt
+
+Calling server and watch
 
     > volo grunt server watch
 
