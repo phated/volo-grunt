@@ -10,8 +10,11 @@
   "engines": {
     "node": ">=0.8.0"
   },
+  "peerDependencies": {
+    "grunt-cli": "~0.1.6",
+    "grunt": "*"
+  },
   "dependencies": {
-    "grunt": "~0.3.17",
     "lodash": "~1.0.0-rc.3"
   }
 }
