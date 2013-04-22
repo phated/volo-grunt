@@ -3,6 +3,8 @@
 var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
+var cliPackage = require('grunt-cli/package.json');
+var cliBinPath = require.resolve('grunt-cli/' + cliPackage.bin.grunt);
 var gruntOptions = require('grunt').cli.optlist;
 
 var flags = {};
@@ -37,8 +39,10 @@ module.exports = {
       args = [].slice.call(arguments, 3);
     }
 
-    // Prefix with n. so spawn knows to grab it from local
-    v.spawn('n.grunt', flags.concat(args), {
+    // Spawn node directly with the grunt-cli bin file
+    // This is a workaround for the spawn not working the same in Windows
+    // local .bin files are batch files in Windows, and can't be spawned the same way as on OSX/Linux
+    v.spawn('node', [cliBinPath].concat(flags, args), {
       useConsole: true
     })
     .then(function () {
